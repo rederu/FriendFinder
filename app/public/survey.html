@@ -213,7 +213,21 @@
         // Capture the form inputs
         $(".submit").on("click", function (event) {
           event.preventDefault();
-    
+        
+          var surveyComplete;
+
+          $(".chosenOption").each(function(){
+          if ( $(this).val() == "" ){
+            surveyComplete = false;
+          }
+        })
+        var valName = $(".name").val().trim();
+        var valImg = $(".image").val().trim();
+
+        if(surveyComplete === false || valName ==="" || valImg ===""){
+            alert("Please fill all fields.")
+        }else{
+
           var newFriend = {
             name: $(".name").val().trim(),
             photo: $(".image").val().trim(),
@@ -235,7 +249,7 @@
               $("#matchImg").attr("src", req.photo);
           });
           
-          
+        }
     
         });
     
