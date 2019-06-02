@@ -10,7 +10,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -31,7 +31,8 @@
                         <a class="nav-link" href="/api/friends"> API Friend List </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/rederu/FriendFinder"> GitHub Repo </a>
+                        <a class="nav-link" target="_blank" href="https://github.com/rederu/FriendFinder"> GitHub Repo
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -201,59 +202,57 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script>
+    <script>
         // Capture the form inputs
         $(".submit").on("click", function (event) {
-          event.preventDefault();
-        
-          var surveyComplete;
+            event.preventDefault();
 
-          $(".chosenOption").each(function(){
-          if ( $(this).val() == "" ){
-            surveyComplete = false;
-          }
-        })
-        var valName = $(".name").val().trim();
-        var valImg = $(".image").val().trim();
+            var surveyComplete;
 
-        if(surveyComplete === false || valName ==="" || valImg ===""){
-            alert("Please fill all fields.")
-        }else{
+            $(".chosenOption").each(function () {
+                if ($(this).val() == "") {
+                    surveyComplete = false;
+                }
+            })
+            var valName = $(".name").val().trim();
+            var valImg = $(".image").val().trim();
 
-          var newFriend = {
-            name: $(".name").val().trim(),
-            photo: $(".image").val().trim(),
-            scores: []
-          }; //end user
-    
-          // Loop through Questions to get scores
-          var scoresArray = [];
-          $(".chosenOption").each(function () {
-            scoresArray.push($(this).val());
-          })
-          newFriend.scores = scoresArray;
-          console.log(scoresArray);
-          console.log(newFriend);
-          $.post("/api/friends", newFriend, function (req, res) {
-      
-              $("#friendModal").modal("toggle");
-              $("#matchName").text(req.name);
-              $("#matchImg").attr("src", req.photo);
-          });
-          
-        }
-    
+            if (surveyComplete === false || valName === "" || valImg === "") {
+                alert("Please fill all fields.")
+            } else {
+
+                var newFriend = {
+                    name: $(".name").val().trim(),
+                    photo: $(".image").val().trim(),
+                    scores: []
+                }; //end user
+
+                // Loop through Questions to get scores
+                var scoresArray = [];
+                $(".chosenOption").each(function () {
+                    scoresArray.push($(this).val());
+                })
+                newFriend.scores = scoresArray;
+                console.log(scoresArray);
+                console.log(newFriend);
+                $.post("/api/friends", newFriend, function (req, res) {
+
+                    $("#friendModal").modal("toggle");
+                    $("#matchName").text(req.name);
+                    $("#matchImg").attr("src", req.photo);
+                });
+
+            }
         });
-    
-      </script>
+    </script>
 
 </body>
 
