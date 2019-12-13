@@ -4,10 +4,16 @@ This app is powered by Express, Javascript, and jQuery, 2 statis HTML files  and
 
 <h2>How does this work?</h2>
 
+<img src="https://i.imgur.com/1862TET.png" width="75%">
+
 This app will request the user to fill a survey in order to find the best friend match for them. 
 The Survey only requests a name, an image URL, and to select between 5 options (from how much the user agree ot disagree) for 10 questions. 
 
+<img src="https://i.imgur.com/ZR21rJB.png" width="75%">
+
 After submitting the requested information, the app will calculate which friend  is the best match for the user and will display it in a modal window. 
+
+<img src="https://i.imgur.com/WkrtwaW.png" width="75%">
 
 
 <h2>How to Install</h2>
